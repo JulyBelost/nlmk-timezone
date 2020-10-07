@@ -21,6 +21,7 @@
 
 ## Обновить документацию
 `go get -u github.com/swaggo/swag/cmd/swag`
+
 `make docs`
 
 ## Тесты
