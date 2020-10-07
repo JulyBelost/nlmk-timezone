@@ -15,12 +15,13 @@ $(info "docker found")
 endif
 
 all: clean time build up
-test: clean time tests
 
 clean:
 	$(RM) time cover.out
-tests:
-	$(GO) test -coverprofile=cover.out
+test:
+	cd cmd/time/apis && $(GO) test -coverprofile=cover.out
+docs:
+	cd cmd/time && swag init
 time:
 	GOOS=linux GOARCH=amd64 $(GO) build -o time ./cmd/time
 build: time
