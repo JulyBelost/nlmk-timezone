@@ -20,8 +20,6 @@ clean:
 	$(RM) time cover.out
 test:
 	cd cmd/time/apis && $(GO) test -coverprofile=cover.out
-docs:
-	cd cmd/time && swag init
 time:
 	GOOS=linux GOARCH=amd64 $(GO) build -o time ./cmd/time
 build: time
