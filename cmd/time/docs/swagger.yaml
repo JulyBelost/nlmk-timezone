@@ -1,0 +1,28 @@
+basePath: /api/v1
+info:
+  contact: {}
+  description: Swagger API for Golang Project Time.
+  license: {}
+  termsOfService: http://swagger.io/terms/
+  title: Time Swagger API
+  version: "1.0"
+paths:
+  /time/{id}:
+    get:
+      parameters:
+      - description: Format
+        in: path
+        name: format
+        required: true
+        type: string
+      - description: TimeZone
+        in: path
+        name: tz
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      summary: Retrieves time
+swagger: "2.0"
