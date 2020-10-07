@@ -26,7 +26,7 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/time/{id}": {
+        "/time": {
             "get": {
                 "produces": [
                     "application/json"
@@ -37,15 +37,13 @@ var doc = `{
                         "type": "string",
                         "description": "Format",
                         "name": "format",
-                        "in": "path",
-                        "required": true
+                        "in": "path"
                     },
                     {
                         "type": "string",
                         "description": "TimeZone",
                         "name": "tz",
-                        "in": "path",
-                        "required": true
+                        "in": "path"
                     }
                 ],
                 "responses": {

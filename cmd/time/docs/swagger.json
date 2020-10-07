@@ -10,7 +10,7 @@
     },
     "basePath": "/api/v1",
     "paths": {
-        "/time/{id}": {
+        "/time": {
             "get": {
                 "produces": [
                     "application/json"
@@ -21,15 +21,13 @@
                         "type": "string",
                         "description": "Format",
                         "name": "format",
-                        "in": "path",
-                        "required": true
+                        "in": "path"
                     },
                     {
                         "type": "string",
                         "description": "TimeZone",
                         "name": "tz",
-                        "in": "path",
-                        "required": true
+                        "in": "path"
                     }
                 ],
                 "responses": {

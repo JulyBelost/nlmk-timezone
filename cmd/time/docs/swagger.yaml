@@ -7,18 +7,16 @@ info:
   title: Time Swagger API
   version: "1.0"
 paths:
-  /time/{id}:
+  /time:
     get:
       parameters:
       - description: Format
         in: path
         name: format
-        required: true
         type: string
       - description: TimeZone
         in: path
         name: tz
-        required: true
         type: string
       produces:
       - application/json

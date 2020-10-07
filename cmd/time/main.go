@@ -4,9 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/swag/example/markdown/api"
-	"github.com/julybelost/nlmk-timezone/cmd/time/api"
-	_ "github.com/julybelost/nlmk-timezone/cmd/time/docs"
+	"github.com/JulyBelost/nlmk-timezone/cmd/time/apis"
+	_ "github.com/JulyBelost/nlmk-timezone/cmd/time/docs"
 )
 
 // @title Time Swagger API
@@ -26,10 +25,8 @@ func main() {
 
 	v1 := r.Group("/api/v1")
 	{
-		v1.GET("/time", api.GetTime)
+		v1.GET("/time", apis.GetTime)
 	}
 
 	r.Run(":8080") // listen and serve on localhost
 }
-
-
