@@ -1,23 +1,24 @@
 package apis
 
 import (
-	"fmt"
 	"net/http"
 	"testing"
 	"time"
 )
 
-func init() {
-	timeNow = func() time.Time {
-		t, _ := time.Parse("2006-01-02 15:04:05", "2017-01-20 01:02:03")
-		return t
-	}
-}
 
 func TestTime(t *testing.T) {
-	fmt.Println(timeNow())
+	tz, _ := time.LoadLocation("Australia/Sydney")
 
 	runAPITests(t, []apiTestCase{
-		{"t1 - get Time", "GET", "/time", "/time", "", GetTime, http.StatusOK, ""},
+		{"t1 - get Time with format", "GET", "/time", "?format=2006-01-02 15:04", "",
+			GetTime, http.StatusOK,
+			"{\"time\":\"" + time.Now().Format("2006-01-02 15:04") + "\"}"},
+		{"t2 - get Time with tz", "GET", "/time", "?tz=Australia/Sydney", "",
+			GetTime, http.StatusOK,
+			"{\"time\":\"" + time.Now().In(tz).Format("Mon Jan 2 15:04:05 -0700 MST 2006") + "\"}"},
+		{"t3 - get Time without params", "GET", "/time", "", "",
+			GetTime, http.StatusOK,
+			"{\"time\":\"" + time.Now().Format("Mon Jan 2 15:04:05 -0700 MST 2006") + "\"}"},
 	})
 }

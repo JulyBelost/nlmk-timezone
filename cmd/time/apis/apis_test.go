@@ -20,7 +20,6 @@ type apiTestCase struct {
 	response         string
 }
 
-// Creates new router in testing mode
 func newRouter() *gin.Engine {
 	gin.SetMode(gin.TestMode)
 	router := gin.New()
@@ -28,7 +27,6 @@ func newRouter() *gin.Engine {
 	return router
 }
 
-// Used to run single API test case. It makes HTTP request and returns its response
 func testAPI(router *gin.Engine, method string, url string, parameters string, function gin.HandlerFunc, body string) *httptest.ResponseRecorder {
 	router.Handle(method, url, function)
 	res := httptest.NewRecorder()
@@ -37,8 +35,6 @@ func testAPI(router *gin.Engine, method string, url string, parameters string, f
 	return res
 }
 
-// Checks JSON response is same as expected data in test case file.
-// All test expected test case responses are stored in `test_data/test_case_data` folder in format `<suite_name>_t<number>.json`
 func runAPITests(t *testing.T, tests []apiTestCase) {
 	for _, test := range tests {
 		router := newRouter()
